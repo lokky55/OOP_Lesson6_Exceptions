@@ -5,9 +5,9 @@ public class CartRepository {
     private PurchaseItem[] items = new PurchaseItem[0];
 
     //  реализуем все методы для репозитория:
-//  методу save будет приходить параметр, который необходимо будет добавит в конец
+//  методу save будет приходить параметр, который необходимо будет добавить в конец
     public void save(PurchaseItem item) {
-        // создаем новый массив на еденицу больше
+        // создаем новый массив на единицу больше
         int length = items.length + 1;
         PurchaseItem[] tmp = new PurchaseItem[length];
 //         itar + tab
@@ -29,6 +29,9 @@ public class CartRepository {
     }
 
     public void removeById(int id) {
+        if (id < 0) {
+            throw new NegativeIdException("Введен некорректный id");
+        }
         int length = items.length - 1;
         PurchaseItem[] tmp = new PurchaseItem[length];
         int index = 0;
